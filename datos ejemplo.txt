@@ -1,0 +1,7 @@
+titulo:
+fecha?:
+dioses: (can be null)
+personajes importantes(humanos/semidioses):
+mitologia:
+texto:
+fuentes:
