@@ -21,9 +21,12 @@ app.get('/api/mitologias',(req, res) => {
         .catch((error)=>console.error(error))
 })
 
-app.get('/api/history/62ef908ddc337c0066b31823', (req, res) =>{
+//rutas creadas para retornar datos segun id 
+//de la coleccion "nordica"
+app.get('/api/history/:nordica_id', (req, res) =>{
+        const {nordica_id } = req.params
         Nordica
-                .findById('62ef908ddc337c0066b31823')
+                .findById(nordica_id)
                 .then(historia => res.json(historia))
 })
 
