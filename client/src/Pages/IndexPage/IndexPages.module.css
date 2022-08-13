@@ -1,0 +1,40 @@
+.resize{
+    min-width: 100%;
+    padding-top:25px;
+    background-color: rgb(34, 30, 30);
+    padding-bottom: 40px;
+    padding-top: 20px;
+}
+.color{
+    background-color:wheat;
+}
+.fondo{
+    border-radius: 20px;
+    background: url("../../../../fondo.PNG");
+    background-size:600px 100% ;
+    background-attachment: fixed;
+}
+.flexbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+}
+.width{
+    width:70%;
+    text-align: center;
+}
+.spaceheight{
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+@media all and (min-width:760px){
+    .fondo{
+        padding-left: 10px;
+        border-radius: 20px;
+        background: url("../../../../fondo.PNG");
+        background-size:1300px  100% ;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+}

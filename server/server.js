@@ -12,6 +12,9 @@ mongoose.connect("mongodb://localhost:27017/mitologias")
 //modelo
 const Nordica = require("./models/mitologias.model")
 
+// CORS (Protección de llamado de los datos del sv)
+const cors = require('cors')
+app.use(cors())
 
 //enrutador / routing
 app.get('/api/mitologias',(req, res) => {

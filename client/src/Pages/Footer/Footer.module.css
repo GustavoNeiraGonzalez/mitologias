@@ -1,0 +1,8 @@
+.color{
+    background-color: rgb(46, 43, 43);
+    color:wheat;
+}
+.resize{
+    min-width: 100%;
+    min-height: 80px;
+}
