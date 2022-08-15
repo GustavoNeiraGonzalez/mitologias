@@ -1,0 +1,25 @@
+.color{
+    background-color: rgb(58, 49, 49);
+    color:wheat;
+}
+
+
+.paddingpos{
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    border-radius: 25px;
+    border-style: solid;
+}
+
+  a:visited {
+    color: wheat;
+  }
+  
+
+  
+  /* selected link */
+  a:active {
+    color: green;
+  }

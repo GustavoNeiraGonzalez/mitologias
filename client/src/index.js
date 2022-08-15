@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NordicaPage from './Pages/NordicaPage/NordicaPage'
 import {IndexPages} from './Pages/IndexPage/IndexPages';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,7 +17,7 @@ root.render(
       <Routes>
         <Route path="/" element={<IndexPages/>}/>
         <Route path="/nordica" element={<NordicaPage/>}/>
-        
+        <Route path="/AgregarMitos" element={<div>ss</div>}></Route>
         <Route path="/nordica/:nordica_id" element={<NordicaDetails/>}/>
         
       </Routes>
