@@ -21,7 +21,8 @@ const DeleteHistory = () => {
                                 <div key={nordic._id} className={style2.color +' '+style2.paddingpos}>
                                     <Link to={`/nordica/${nordic._id}`}>
                                     {nordic.Titulo}
-                                    </Link>     
+                                    </Link> 
+                                    <button>Delete</button>    
                                 </div>
                             )
                         })}
