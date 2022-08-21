@@ -7,6 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Header} from './Pages/Header/Header'
 import {Footer} from './Pages/Footer/Footer'
 import  NordicaDetails  from './Pages/NordicaDetails/NordicaDetails';
+import InsertHistory from './Pages/InsertHistory/InsertHistory'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -16,6 +18,7 @@ root.render(
     <main>
       <Routes>
         <Route path="/" element={<IndexPages/>}/>
+        <Route path="/AgregarHistoria" element={<InsertHistory/>}></Route>
         <Route path="/nordica" element={<NordicaPage/>}/>
         <Route path="/AgregarMitos" element={<div>ss</div>}></Route>
         <Route path="/nordica/:nordica_id" element={<NordicaDetails/>}/>

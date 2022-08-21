@@ -14,6 +14,7 @@ const NordicaDetails = () => {
         fetch(`http://localhost:3001/api/history/${nordica_id}`)
         .then(response => response.json())
         .then(nordica => setNordica(nordica))
+        .catch(error => console.log(error))
     }
 
     loadNordicaDetails()
