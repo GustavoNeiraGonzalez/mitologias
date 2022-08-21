@@ -1,0 +1,9 @@
+.color{
+    background-color: wheat;
+}
+.resize{
+    min-width: 100%;
+    padding-top:25px;
+    padding-bottom: 40px;
+    padding-top: 20px;
+}
