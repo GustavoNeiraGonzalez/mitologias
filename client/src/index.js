@@ -8,7 +8,7 @@ import {Header} from './Pages/Header/Header'
 import {Footer} from './Pages/Footer/Footer'
 import  NordicaDetails  from './Pages/NordicaDetails/NordicaDetails';
 import InsertHistory from './Pages/InsertHistory/InsertHistory'
-
+import DeleteHistory from './Pages/DeleteHistory/DeleteHistory'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -22,7 +22,7 @@ root.render(
         <Route path="/nordica" element={<NordicaPage/>}/>
         <Route path="/AgregarMitos" element={<div>ss</div>}></Route>
         <Route path="/nordica/:nordica_id" element={<NordicaDetails/>}/>
-        
+        <Route path="/BorrarHistoria" element={<DeleteHistory/>} />
       </Routes>
     </main>
     <footer>
