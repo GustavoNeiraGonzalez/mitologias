@@ -1,23 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import style from '../IndexPage/IndexPages.module.css'
 import style2 from './NordicaDetails.module.css'
-
+import axios from 'axios'
 const NordicaDetails = () => {
 
     const {nordica_id} = useParams();
     const [nordica, setNordica] = useState({})
-    const loadNordicaDetails = () =>{
-        fetch(`http://localhost:3001/api/history/${nordica_id}`)
-        .then(response => response.json())
-        .then(nordica => setNordica(nordica))
-        .catch(error => console.log(error))
-    }
 
-    loadNordicaDetails()
+    useEffect(() => {
+      axios.get(`http://localhost:3001/api/history/${nordica_id}`)
+      .then(nordica => setNordica(nordica.data))
+      .catch(error => console.log(error))
+  }, [])
+    
 
     return (
         <Container className={style.resize}>

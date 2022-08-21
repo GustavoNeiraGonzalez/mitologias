@@ -6,6 +6,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import style from './IndexPages.module.css'
 export  function IndexPages() {
+  
+
   return (
     <Container className={style.resize}>
       <Row >

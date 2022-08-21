@@ -1,21 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import style from '../IndexPage/IndexPages.module.css';
 import style2 from './NordicaPage.module.css'
+import axios from 'axios'
 
 const NordicaPage = () =>{
 
     const [nordica, setNordica] = useState([])
+    useEffect(() => {
+        axios.get('http://localhost:3001/api/mitologias/nordica')
+        .then(allNordica =>setNordica(allNordica.data))
+    }, [])
+    
 
-    const loadNordica = () =>{
-        fetch('http://localhost:3001/api/mitologias/nordica')
-        .then(res=>res.json())
-        .then(allNordica =>setNordica(allNordica))
-    }
-    loadNordica ();
     return(
         <Container className={style.resize}>
             <Row >
