@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import axios from "axios"
 import { useParams } from 'react-router-dom';
+import style from './UpdateHistory.module.css'
 const UpdateHistory = () => {
     const [Titulo, settitulo] = useState('');
     const [Dioses, setdioses] = useState('');
@@ -35,7 +36,7 @@ const UpdateHistory = () => {
 }
 
   return (
-    <Form>
+    <Form className={style.color}>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
         <Form.Label>Titulo</Form.Label>
         <Form.Control type="text" value={nordica.Titulo}
@@ -45,35 +46,35 @@ const UpdateHistory = () => {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Dioses</Form.Label>
+        <Form.Label>Dioses (array: poner todo junto separado por , )</Form.Label>
         <Form.Control type="text" value={nordica.Dioses} 
         onChange={(e) => {
-            setdioses(e.target.value);
+            setdioses(e.target.value.split(','));
         }}
         />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Facciones</Form.Label>
+        <Form.Label>Facciones (array: poner todo junto separado por , )</Form.Label>
         <Form.Control type="text" value={nordica.Facciones} 
         onChange={(e) => {
-            setfacciones(e.target.value);
+            setfacciones(e.target.value.split(','));
         }}/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Personajes_importantes</Form.Label>
+        <Form.Label>Personajes_importantes (array: poner todo junto separado por , )</Form.Label>
         <Form.Control type="text" value={nordica.Personajes_importantes} 
         onChange={(e) => {
-            setpersonajes(e.target.value);
+            setpersonajes(e.target.value.split(','));
         }}/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Lugares</Form.Label>
+        <Form.Label>Lugares (array: poner todo junto separado por , )</Form.Label>
         <Form.Control type="text" value={nordica.Lugares} 
         onChange={(e) => {
-            setlugares(e.target.value);
+            setlugares(e.target.value.split(','));
         }}/>
       </Form.Group>
 

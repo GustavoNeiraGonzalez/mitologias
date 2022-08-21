@@ -31,48 +31,50 @@ export default function InsertHistory() {
     <Form>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
         <Form.Label>Titulo</Form.Label>
-        <Form.Control type="text" placeholder="name@example.com" 
+        <Form.Control type="text" placeholder="ej: El diluvio" 
         onChange={(e) => {
             settitulo(e.target.value);
         }}/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Dioses</Form.Label>
-        <Form.Control type="text" placeholder="name@example.com" 
+        <Form.Label>Dioses(array: poner todo junto separado por , )</Form.Label>
+        <Form.Control type="text" placeholder="ej: asd,caca,pipi" 
         onChange={(e) => {
-            setdioses(e.target.value);
+          
+
+            setdioses(e.target.value.split(','));
         }}
         />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Facciones</Form.Label>
-        <Form.Control type="text" placeholder="name@example.com" 
+        <Form.Label>Facciones(array: poner todo junto separado por , )</Form.Label>
+        <Form.Control type="text" placeholder="ej: asd,caca,pipi" 
         onChange={(e) => {
-            setfacciones(e.target.value);
+            setfacciones(e.target.value.split(','));
         }}/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Personajes_importantes</Form.Label>
-        <Form.Control type="text" placeholder="name@example.com" 
+        <Form.Label>Personajes_importantes(array: poner todo junto separado por , )</Form.Label>
+        <Form.Control type="text" placeholder="ej: asd,caca,pipi" 
         onChange={(e) => {
-            setpersonajes(e.target.value);
+            setpersonajes(e.target.value.split(','));
         }}/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Lugares</Form.Label>
-        <Form.Control type="text" placeholder="name@example.com" 
+        <Form.Label>Lugares(array: poner todo junto separado por , )</Form.Label>
+        <Form.Control type="text" placeholder="ej: asd,caca,pipi" 
         onChange={(e) => {
-            setlugares(e.target.value);
+            setlugares(e.target.value.split(','));
         }}/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
         <Form.Label>Historia</Form.Label>
-        <Form.Control as="textarea" rows={3} 
+        <Form.Control as="textarea" rows={3} placeholder="En una tierra muy lejana..."
         onChange={(e) => {
             sethistoria(e.target.value);
         }}/>
@@ -80,7 +82,7 @@ export default function InsertHistory() {
 
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
         <Form.Label>Fuentes</Form.Label>
-        <Form.Control type="text" placeholder="name@example.com" 
+        <Form.Control type="text" placeholder="mitologias.com" 
         onChange={(e) => {
             setfuentes(e.target.value);
         }}/>
