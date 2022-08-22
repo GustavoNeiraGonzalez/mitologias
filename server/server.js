@@ -52,7 +52,34 @@ app.post('/insert', async (req,res) =>{
             }
 })
 
+//UPDATE
+app.put('/update', async (req,res) =>{
+        const id = req.body.id;
+        const Titulo = req.body.Titulo;
+        const Dioses = req.body.Dioses;
+        const Facciones = req.body.Facciones;
+        const Personajes_importantes = req.body.Personajes_importantes;
+        const Lugares = req.body.Lugares;
+        const Historia = req.body.Historia;
+        const Fuentes = req.body.Fuentes;
+        try{
+                await Nordica.findById(id)
+                .then(updateMito=>{
+                                updateMito.Titulo =Titulo;
+                                updateMito.Dioses =Dioses;
+                                updateMito.Facciones =Facciones;
+                                updateMito.Personajes_importantes =Personajes_importantes;
+                                updateMito.Lugares =Lugares;
+                                updateMito.Historia =Historia;
+                                updateMito.Fuentes =Fuentes;
+                                updateMito.save();
+                                res.send("update")
+                })
+            }catch(err){
+                console.error(err)
+            }
 
+})
 
 
 //DB conexion

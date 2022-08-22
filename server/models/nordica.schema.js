@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const nordicaSchema = mongoose.Schema({
     Titulo:{
         type:String,
-        required:true
+        required:false
     },
     Dioses:{
         type:Array,
@@ -23,7 +23,7 @@ const nordicaSchema = mongoose.Schema({
     },
     Historia:{
         type:String,
-        required:true
+        required:false
     },
     Fuentes:{
         type:String,
