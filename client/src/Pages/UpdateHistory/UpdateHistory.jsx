@@ -23,6 +23,14 @@ const UpdateHistory = () => {
   }, [])
 
   const UpdateList = (id) => {
+    settitulo(document.getElementById('Titulo').value)
+    setdioses(document.getElementById('Dioses').value.split(','))
+    setfacciones(document.getElementById('Facciones').value.split(','))
+    setpersonajes(document.getElementById('Personajes_importantes').value.split(','))
+    setlugares(document.getElementById('Lugares').value.split(','))
+    sethistoria(document.getElementById('Historia').value)
+    setfuentes(document.getElementById('Fuentes').value)
+
     axios.put('http://localhost:3001/update', {
         id:id,
         Titulo:Titulo,
@@ -38,7 +46,7 @@ const UpdateHistory = () => {
 
   return (
     <Form className={style.color}>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+      <Form.Group className="mb-3" controlId="Titulo">
         <Form.Label>Titulo</Form.Label>
         <Form.Control type="text" defaultValue={nordica.Titulo}
         onChange={(e) => {
@@ -46,7 +54,7 @@ const UpdateHistory = () => {
         }}/>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+      <Form.Group className="mb-3" controlId="Dioses">
         <Form.Label>Dioses (array: poner todo junto separado por , )</Form.Label>
         <Form.Control type="text" defaultValue={nordica.Dioses} 
         onChange={(e) => {
@@ -55,7 +63,7 @@ const UpdateHistory = () => {
         />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+      <Form.Group className="mb-3" controlId="Facciones">
         <Form.Label>Facciones (array: poner todo junto separado por , )</Form.Label>
         <Form.Control type="text" defaultValue={nordica.Facciones} 
         onChange={(e) => {
@@ -63,7 +71,7 @@ const UpdateHistory = () => {
         }}/>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+      <Form.Group className="mb-3" controlId="Personajes_importantes">
         <Form.Label>Personajes_importantes (array: poner todo junto separado por , )</Form.Label>
         <Form.Control type="text" defaultValue={nordica.Personajes_importantes} 
         onChange={(e) => {
@@ -71,7 +79,7 @@ const UpdateHistory = () => {
         }}/>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+      <Form.Group className="mb-3" controlId="Lugares">
         <Form.Label>Lugares (array: poner todo junto separado por , )</Form.Label>
         <Form.Control type="text" defaultValue={nordica.Lugares} 
         onChange={(e) => {
@@ -79,7 +87,7 @@ const UpdateHistory = () => {
         }}/>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+      <Form.Group className="mb-3" controlId="Historia">
         <Form.Label>Historia</Form.Label>
         <Form.Control as="textarea" rows={6} defaultValue={nordica.Historia}
         onChange={(e) => {
@@ -87,7 +95,7 @@ const UpdateHistory = () => {
         }}/>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+      <Form.Group className="mb-3" controlId="Fuentes">
         <Form.Label>Fuentes</Form.Label>
         <Form.Control type="text" defaultValue={nordica.Fuentes} 
         onChange={(e) => {
