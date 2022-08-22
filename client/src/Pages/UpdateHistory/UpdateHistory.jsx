@@ -31,7 +31,7 @@ const UpdateHistory = () => {
     sethistoria(document.getElementById('Historia').value)
     setfuentes(document.getElementById('Fuentes').value)
 
-    axios.put('http://localhost:3001/update', {
+    axios.put('http://localhost:3001/update' , {
         id:id,
         Titulo:Titulo,
         Dioses:Dioses,
