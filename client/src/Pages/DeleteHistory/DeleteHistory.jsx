@@ -16,13 +16,13 @@ const DeleteHistory = () => {
     <Container className={style.color+' '+style.resize}>
     <Row >
       <Col>
+      <h1>Nordica </h1>
       {nordica.map(nordic => {
                             return(
                                 <div key={nordic._id} className={style2.color +' '+style2.paddingpos}>
-                                    <Link to={`/nordica/${nordic._id}`}>
+                                    <Link to={`/nordica/${nordic._id}/update`}>
                                     {nordic.Titulo}
                                     </Link> 
-                                    <button>Delete</button>    
                                 </div>
                             )
                         })}

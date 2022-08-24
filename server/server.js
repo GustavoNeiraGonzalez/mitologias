@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
-var bodyParser = require('body-parser')
 
+var bodyParser = require('body-parser')
+const bcrypt = require('bcrypt')
 const port = process.env.PORT || 3001;//process.env.port es propio dejavascript
 
 // CORS (Protección de llamado de los datos del sv)
@@ -13,8 +14,7 @@ app.use(bodyParser.json())
 
 //modelo
 const Nordica = require("./models/nordica.schema")
-
-
+const User = require("./models/user.schema")
 //enrutador / routing
 app.get('/api/mitologias/nordica',(req, res) => {
     Nordica
@@ -80,8 +80,38 @@ app.put('/update', async (req,res) =>{
             }
 
 })
+//DELETE----
+app.delete("/delete/:id", async(req,res)=>{
+        const id = req.params.id;
+        await Nordica.findByIdAndDelete(id)
+        .exec();
 
+})
+app.post("/login",async(req,res)=>{
+        const name = req.body.name;
+        const password = req.body.password;
 
+        User.find({name})
+        .then(user =>{
+                if(user){
+                        return res.json({message:user})
+                        User.findOne({password})
+                        .then(user =>{
+                                if(!user){
+                                        return res.json({message:"password not found"})
+                                }else{
+                                        return res.json({message:"password YES found"})
+
+                                }
+                        });
+                }else{
+                        return res.json({message:"user YES found"})
+
+                }
+        });
+        })
+
+      
 //DB conexion
 const mongoose = require('mongoose')
 mongoose.connect("mongodb://localhost:27017/mitologias")

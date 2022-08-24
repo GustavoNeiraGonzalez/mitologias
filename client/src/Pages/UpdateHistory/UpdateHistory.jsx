@@ -5,6 +5,8 @@ import axios from "axios"
 import { useParams } from 'react-router-dom';
 import style from './UpdateHistory.module.css'
 const UpdateHistory = () => {
+
+
     const [Titulo, settitulo] = useState("");
     const [Dioses, setdioses] = useState("");
     const [Facciones, setfacciones] = useState("");
@@ -43,67 +45,57 @@ const UpdateHistory = () => {
     })
     .catch(err =>console.log(err))
 }
+    
+    const Delete = (id) =>{
+        axios.delete(`http://localhost:3001/delete/${id}`)
+    }
 
   return (
     <Form className={style.color}>
       <Form.Group className="mb-3" controlId="Titulo">
         <Form.Label>Titulo</Form.Label>
         <Form.Control type="text" defaultValue={nordica.Titulo}
-        onChange={(e) => {
-            settitulo(e.target.value);
-        }}/>
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="Dioses">
         <Form.Label>Dioses (array: poner todo junto separado por , )</Form.Label>
         <Form.Control type="text" defaultValue={nordica.Dioses} 
-        onChange={(e) => {
-            setdioses(e.target.value.split(','));
-        }}
+        
         />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="Facciones">
         <Form.Label>Facciones (array: poner todo junto separado por , )</Form.Label>
         <Form.Control type="text" defaultValue={nordica.Facciones} 
-        onChange={(e) => {
-            setfacciones(e.target.value.split(','));
-        }}/>
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="Personajes_importantes">
         <Form.Label>Personajes_importantes (array: poner todo junto separado por , )</Form.Label>
         <Form.Control type="text" defaultValue={nordica.Personajes_importantes} 
-        onChange={(e) => {
-            setpersonajes(e.target.value.split(','));
-        }}/>
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="Lugares">
         <Form.Label>Lugares (array: poner todo junto separado por , )</Form.Label>
         <Form.Control type="text" defaultValue={nordica.Lugares} 
-        onChange={(e) => {
-            setlugares(e.target.value.split(','));
-        }}/>
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="Historia">
         <Form.Label>Historia</Form.Label>
         <Form.Control as="textarea" rows={6} defaultValue={nordica.Historia}
-        onChange={(e) => {
-            sethistoria(e.target.value);
-        }}/>
+      />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="Fuentes">
         <Form.Label>Fuentes</Form.Label>
         <Form.Control type="text" defaultValue={nordica.Fuentes} 
-        onChange={(e) => {
-            setfuentes(e.target.value);
-        }}/>
+       />
       </Form.Group>
-      <button type="button" onClick={()=>UpdateList(nordica._id)}>ModifyHistory</button>
-      <button type="button">Delete history</button>
+      <button  id='update' type="button" onClick={()=>{UpdateList(nordica._id)} }>ModifyHistory</button>
+      <button type="button" onClick={()=>Delete(nordica._id)}>Delete history</button>
     </Form>
     )
 }

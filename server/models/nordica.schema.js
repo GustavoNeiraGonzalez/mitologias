@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
+const { Schema } = mongoose;
 
-const nordicaSchema = mongoose.Schema({
+const nordicaSchema = new Schema({
     Titulo:{
         type:String,
         required:false
@@ -31,6 +32,6 @@ const nordicaSchema = mongoose.Schema({
     }
 })
 
-const Nordica = mongoose.model('mitologias', nordicaSchema, 'nordica')
+var Nordica = mongoose.model('Nordicas', nordicaSchema, 'nordica')
 
 module.exports = Nordica

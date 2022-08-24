@@ -16,10 +16,14 @@
   a:visited {
     color: wheat;
   }
-  
-
+  a:link{
+    color:wheat
+  }
   
   /* selected link */
   a:active {
+    color: green;
+  }
+  a:hover {
     color: green;
   }
