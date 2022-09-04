@@ -1,9 +1,11 @@
 const express = require('express')
 const app = express()
-
+require('dotenv').config()
 var bodyParser = require('body-parser')
 const bcrypt = require('bcrypt')
 const port = process.env.PORT || 3001;//process.env.port es propio dejavascript
+const controllers = require("./controllers");
+const verifyToken = require('./middlewares/verifyToken')
 
 // CORS (Protección de llamado de los datos del sv)
 var cors = require('cors')
@@ -33,7 +35,9 @@ app.get('/api/history/:nordica_id', (req, res) =>{
 })
 
 //post
-app.post('/insert', async (req,res) =>{
+//verifytoken verifica que tenga un token para asegurar que el usuario este logeado
+//ruta mas segura :D
+app.post('/insert',verifyToken, async (req,res) =>{
         
         const Titulo = req.body.Titulo;
         const Dioses = req.body.Dioses;
@@ -53,7 +57,9 @@ app.post('/insert', async (req,res) =>{
 })
 
 //UPDATE
-app.put('/update', async (req,res) =>{
+//verifytoken verifica que tenga un token para asegurar que el usuario este logeado
+//ruta mas segura :D
+app.put('/update',verifyToken, async (req,res) =>{
         const id = req.body.id;
         const Titulo = req.body.Titulo;
         const Dioses = req.body.Dioses;
@@ -81,37 +87,18 @@ app.put('/update', async (req,res) =>{
 
 })
 //DELETE----
-app.delete("/delete/:id", async(req,res)=>{
+//verifytoken verifica que tenga un token para asegurar que el usuario este logeado
+//ruta mas segura :D
+app.delete("/delete/:id",verifyToken, async(req,res)=>{
         const id = req.params.id;
         await Nordica.findByIdAndDelete(id)
         .exec();
 
 })
-app.post("/login",async(req,res)=>{
-        const name = req.body.name;
-        const password = req.body.password;
 
-        User.find({name})
-        .then(user =>{
-                if(user){
-                        return res.json({message:user})
-                        User.findOne({password})
-                        .then(user =>{
-                                if(!user){
-                                        return res.json({message:"password not found"})
-                                }else{
-                                        return res.json({message:"password YES found"})
-
-                                }
-                        });
-                }else{
-                        return res.json({message:"user YES found"})
-
-                }
-        });
-        })
-
-      
+app.post("/register" ,controllers.register);
+app.get('/user', verifyToken,controllers.getUserById);
+app.post("/login", controllers.login);
 //DB conexion
 const mongoose = require('mongoose')
 mongoose.connect("mongodb://localhost:27017/mitologias")

@@ -32,6 +32,6 @@ const nordicaSchema = new Schema({
     }
 })
 
-var Nordica = mongoose.model('Nordicas', nordicaSchema, 'nordica')
+var Nordica = mongoose.model('nordica', nordicaSchema, 'nordica')
 
 module.exports = Nordica
