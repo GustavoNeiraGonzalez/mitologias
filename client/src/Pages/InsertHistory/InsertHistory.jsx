@@ -41,8 +41,6 @@ export default function InsertHistory() {
         <Form.Label>Dioses(array: poner todo junto separado por , )</Form.Label>
         <Form.Control type="text" placeholder="ej: asd,caca,pipi" 
         onChange={(e) => {
-          
-
             setdioses(e.target.value.split(','));
         }}
         />

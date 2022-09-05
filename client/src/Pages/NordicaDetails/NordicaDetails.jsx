@@ -12,6 +12,7 @@ const NordicaDetails = () => {
     const [nordica, setNordica] = useState({})
 
     useEffect(() => {
+      
       axios.get(`http://localhost:3001/api/history/${nordica_id}`)
       .then(nordica => setNordica(nordica.data))
       .catch(error => console.log(error))
