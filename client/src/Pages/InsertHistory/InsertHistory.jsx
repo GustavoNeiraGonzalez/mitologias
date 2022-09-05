@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import axios from "axios"
 
 export default function InsertHistory() {
 
+
+    const [user,setUser] = useState('');
+    const [config,setConfig] = useState('');
     const [Titulo, settitulo] = useState('');
     const [Dioses, setdioses] = useState('');
     const [Facciones, setfacciones] = useState('');
@@ -13,6 +16,23 @@ export default function InsertHistory() {
     const [Historia, sethistoria] = useState('');
     const [Fuentes, setfuentes] = useState('');
 
+
+    useEffect(()=>{
+      const loggedUserJson = window.localStorage.getItem('loggedd')
+      if (loggedUserJson){
+        const user = (JSON.parse(loggedUserJson)).usuario
+        setUser(user)
+        console.log(user)
+        const configg =  {
+          headers:{
+              token:`bearer ${user.token}`
+          }
+        }
+        setConfig(configg)
+        console.log(configg)
+      }
+      
+    },[])
 
     const addToList = () => {
         axios.post('http://localhost:3001/insert', {
@@ -23,7 +43,7 @@ export default function InsertHistory() {
             Lugares:Lugares,
             Historia:Historia,
             Fuentes:Fuentes
-        })
+        }, config)
         .catch(err =>console.log(err))
     }
 
