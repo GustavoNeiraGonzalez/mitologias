@@ -31,7 +31,6 @@ export default function InsertHistory() {
         setConfig(configg)
         console.log(configg)
       }
-      
     },[])
 
     const addToList = () => {
