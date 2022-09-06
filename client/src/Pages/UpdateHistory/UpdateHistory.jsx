@@ -18,6 +18,25 @@ const UpdateHistory = () => {
     const {nordica_id} = useParams();
     const [nordica, setNordica] = useState({})
 
+    const [user,setUser] = useState('');
+    const [config,setConfig] = useState('');
+
+    useEffect(()=>{
+      const loggedUserJson = window.localStorage.getItem('loggedd')
+      if (loggedUserJson){
+        const user = (JSON.parse(loggedUserJson)).usuario
+        setUser(user)
+        console.log(user)
+        const configg =  {
+          headers:{
+              token:`bearer ${user.token}`
+          }
+        }
+        setConfig(configg)
+        console.log(configg)
+      }
+    },[])
+
     useEffect(() => {
       axios.get(`http://localhost:3001/api/history/${nordica_id}`)
       .then(nordica => setNordica(nordica.data))
@@ -42,12 +61,12 @@ const UpdateHistory = () => {
         Lugares:Lugares,
         Historia:Historia,
         Fuentes:Fuentes
-    })
+    }, config)
     .catch(err =>console.log(err))
 }
     
     const Delete = (id) =>{
-        axios.delete(`http://localhost:3001/delete/${id}`)
+        axios.delete(`http://localhost:3001/delete/${id}`,config)
     }
 
   return (
