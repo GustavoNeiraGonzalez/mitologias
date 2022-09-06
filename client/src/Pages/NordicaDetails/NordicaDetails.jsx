@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,7 +10,15 @@ const NordicaDetails = () => {
 
     const {nordica_id} = useParams();
     const [nordica, setNordica] = useState({})
+    const [user,setUser] = useState('');
 
+    useEffect(()=>{
+      const loggedUserJson = window.localStorage.getItem('loggedd')
+      if (loggedUserJson){
+        const user = (JSON.parse(loggedUserJson)).usuario
+        setUser(user)        
+      }
+    },[])
     useEffect(() => {
       
       axios.get(`http://localhost:3001/api/history/${nordica_id}`)
@@ -32,6 +40,12 @@ const NordicaDetails = () => {
           </Col>
           <Col sm={1} xs={1} className={style.fondo}></Col>
         </Row>
+        {
+          user
+          ? <Link to={`/nordica/${nordica_id}/update`}>Ir a modificar historia</Link>
+          : <div></div>
+        }
+
       </Container>
     )
 }
