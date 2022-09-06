@@ -5,6 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import style from '../IndexPage/IndexPages.module.css';
 import style2 from './NordicaPage.module.css'
+import style3 from '../heightfull/height.module.css'
+
 import axios from 'axios'
 
 const NordicaPage = () =>{
@@ -17,20 +19,12 @@ const NordicaPage = () =>{
     
 
     return(
-        <Container className={style.resize}>
+        <Container className={style.resize+' '+style3.heig}>
             <Row >
                 <Col sm={1} xs={1}></Col>
                 <Col sm={10} xs={10} className={style.color +' '+style.flexbox}>
 
                     <div >
-                        <div className={style2.color +' '+style2.paddingpos}>Cras justo odio</div>
-                        <div className={style2.color +' '+style2.paddingpos}>Cras justo odio</div>
-                        <div className={style2.color +' '+style2.paddingpos}>Cras justo odio</div>
-
-                        <div className={style2.color +' '+style2.paddingpos}>Cras justo odio</div>
-                        <div className={style2.color +' '+style2.paddingpos}>Dapibus ac facilisis in</div>
-                        <div className={style2.color +' '+style2.paddingpos}>Morbi leo risus</div>
-                        <div className={style2.color +' '+style2.paddingpos}>Porta ac consectetur ac</div>
                         {nordica.map(nordic => {
                             return(
                                 <div key={nordic._id} className={style2.color +' '+style2.paddingpos}>

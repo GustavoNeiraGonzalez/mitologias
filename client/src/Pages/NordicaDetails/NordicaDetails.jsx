@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 import style from '../IndexPage/IndexPages.module.css'
 import style2 from './NordicaDetails.module.css'
 import axios from 'axios'
+import style3 from '../heightfull/height.module.css'
+
 const NordicaDetails = () => {
 
     const {nordica_id} = useParams();
@@ -28,7 +30,7 @@ const NordicaDetails = () => {
     
 
     return (
-        <Container className={style.resize}>
+        <Container className={style.resize+' '+style3.heig}>
         <Row >
           <Col sm={1} xs={1}></Col>
           <Col sm={10} xs={10} className={style.color +' '+style.flexbox}>

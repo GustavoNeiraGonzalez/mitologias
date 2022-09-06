@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'
 import style from './DeleteHistory.module.css'
 import style2 from '../NordicaPage/NordicaPage.module.css'
+import style3 from '../heightfull/height.module.css'
+
 const DeleteHistory = () => {
     const [nordica, setNordica] = useState([])
     useEffect(() => {
@@ -13,7 +15,7 @@ const DeleteHistory = () => {
         .then(allNordica =>setNordica(allNordica.data))
     }, [])
   return (
-    <Container className={style.color+' '+style.resize}>
+    <Container className={style.color+' '+style.resize+' '+style3.heig}>
     <Row >
       <Col>
       <h1>Nordica </h1>

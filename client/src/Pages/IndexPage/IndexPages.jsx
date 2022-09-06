@@ -5,11 +5,13 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import style from './IndexPages.module.css'
+import style2 from '../heightfull/height.module.css'
+
 export  function IndexPages() {
   
 
   return (
-    <Container className={style.resize}>
+    <Container className={style.resize+' '+style2.heig}>
       <Row >
         <Col sm={1} xs={1}></Col>
         <Col sm={10} xs={10} className={style.color +' '+style.flexbox}>
