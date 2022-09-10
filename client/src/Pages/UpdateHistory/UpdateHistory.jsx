@@ -90,7 +90,7 @@ const UpdateHistory = () => {
         <Form.Group className="mb-3" controlId="Dioses">
           <Form.Label>Dioses (array: poner todo junto separado por , )</Form.Label>
           <Form.Control type="text" onChange={(e) => {
-                setdioses(e.target.value);
+                setdioses(e.target.value.split(','));
             }}
 
           defaultValue={Dioses}
@@ -100,7 +100,7 @@ const UpdateHistory = () => {
         <Form.Group className="mb-3" controlId="Facciones">
           <Form.Label>Facciones (array: poner todo junto separado por , )</Form.Label>
           <Form.Control type="text" onChange={(e) => {
-                setfacciones(e.target.value);
+                setfacciones((e.target.value.split(',')));
             }}
 
           defaultValue={Facciones}
@@ -110,7 +110,7 @@ const UpdateHistory = () => {
         <Form.Group className="mb-3" controlId="Personajes_importantes">
           <Form.Label>Personajes_importantes (array: poner todo junto separado por , )</Form.Label>
           <Form.Control type="text" onChange={(e) => {
-                setpersonajes(e.target.value);
+                setpersonajes(e.target.value.split(','));
             }}
 
           defaultValue={Personajes_importantes}
@@ -120,7 +120,7 @@ const UpdateHistory = () => {
         <Form.Group className="mb-3" controlId="Lugares">
           <Form.Label>Lugares (array: poner todo junto separado por , )</Form.Label>
           <Form.Control type="text" onChange={(e) => {
-                setlugares(e.target.value);
+                setlugares(e.target.value.split(','));
             }}
 
           defaultValue={Lugares}
