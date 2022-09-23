@@ -20,19 +20,25 @@ const User = require("./models/user.schema")
 const Prueba = require("./models/prueba.schema")
 //enrutador / routing
 app.get('/api/mitologias/nordica',(req, res) => {
-    Nordica
+    Prueba
         .find()
-        .then(allNordica => res.json(allNordica))
+        .then(allMitos => res.json(allMitos))
         .catch((error)=>console.error(error))
 })
-
+app.get('/api/difMitos',(req, res) => {
+        Prueba
+            .find()
+            .distinct("mito")
+            .then(total => res.json(total))
+            .catch((error)=>console.error(error))
+    })
 //rutas creadas para retornar datos segun id 
 //de la coleccion "nordica"
 app.get('/api/history/:nordica_id', (req, res) =>{
         const {nordica_id } = req.params
-        Nordica
+        Prueba
                 .findById(nordica_id)
-                .then(historia => res.json(historia))
+                .then(historia => res.json(historia.info))
 })
 app.get('/test/:mitologia', (req, res) =>{
         const {mitologia} = req.params
@@ -64,7 +70,7 @@ app.post('/inserttest', async (req,res) =>{
 //post
 //verifytoken verifica que tenga un token para asegurar que el usuario este logeado
 //ruta mas segura :D
-app.post('/insert', async (req,res) =>{
+app.post('/insert',verifyToken, async (req,res) =>{
         
         const Titulo = req.body.Titulo;
         const Dioses = req.body.Dioses;
