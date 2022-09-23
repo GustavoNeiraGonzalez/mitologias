@@ -17,6 +17,7 @@ app.use(bodyParser.json())
 //modelo
 const Nordica = require("./models/nordica.schema")
 const User = require("./models/user.schema")
+const Prueba = require("./models/prueba.schema")
 //enrutador / routing
 app.get('/api/mitologias/nordica',(req, res) => {
     Nordica
@@ -33,11 +34,37 @@ app.get('/api/history/:nordica_id', (req, res) =>{
                 .findById(nordica_id)
                 .then(historia => res.json(historia))
 })
+app.get('/test/:mitologia', (req, res) =>{
+        const {mitologia} = req.params
+        console.log(mitologia)
+        Prueba
+                .find({mito:mitologia,"info.Titulo":"El Mito de Frigg"})
+                .then(historia => res.json(historia))
+                .catch((error)=>console.error(error))
+})
+app.get('/asd', (req, res) =>{
+        Prueba
+                .find({mito:"nordicss"})
+                .then(historia => res.json(historia))
+                .catch((error)=>console.error(error))
+
+})
+app.post('/inserttest', async (req,res) =>{
+        
+        const Titulo = req.body.Titulo;
+        const MitoNordic = new Prueba({info:{Titulo:Titulo},mito:"XD"});
+        try{
+                await MitoNordic.save();
+                res.send("inserted data")
+            }catch(err){
+                console.log(err)
+            }
+})
 
 //post
 //verifytoken verifica que tenga un token para asegurar que el usuario este logeado
 //ruta mas segura :D
-app.post('/insert',verifyToken, async (req,res) =>{
+app.post('/insert', async (req,res) =>{
         
         const Titulo = req.body.Titulo;
         const Dioses = req.body.Dioses;
@@ -47,7 +74,8 @@ app.post('/insert',verifyToken, async (req,res) =>{
         const Historia = req.body.Historia      ;
         const Fuentes = req.body.Fuentes;
 
-        const MitoNordic = new Nordica({Titulo:Titulo,Dioses:Dioses,Facciones:Facciones,Personajes_importantes:Personajes_importantes,Lugares:Lugares,Historia:Historia,Fuentes:Fuentes});
+        const MitoNordic = new Prueba({info:{Titulo:Titulo,Dioses:Dioses,Facciones:Facciones,Personajes_importantes:Personajes_importantes,Lugares:Lugares,Historia:Historia,Fuentes:Fuentes}
+        ,mito:"Nordica"});
         try{
                 await MitoNordic.save();
                 res.send("inserted data")

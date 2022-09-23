@@ -1,0 +1,6 @@
+idea automatizar la creacion de historias Diferentes mitologias, todas las historias estaran en la misma coleccion
+las cuales tendran el titulo de la mitologia como parametro que contiene el array de la historia (titulo dioses, etc)
+habria que cambiar el nombre de la colección historias
+
+solucion alternativa de crear colleciones por parametros del usuario 
+NO IDEA + PARECE MAS DIFICIL QUE LA PRIMERA OPCION
