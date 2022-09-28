@@ -43,8 +43,9 @@ export  function IndexPages() {
             <div className={'fw-normal lh-base fs-4 '+style.width+' '+style.spaceheight}>
                 Mitologias en Construcción: <Link to="/nordica">Nordica</Link></div>
                 {totalMitos.map(total => {
+                  console.log(total)
                             return(
-                                <div key={total._id} className={'fw-normal lh-base fs-4 '+style.width+' '+style.spaceheight+' '+style.color}>
+                                <div key={total} className={'fw-normal lh-base fs-4 '+style.width+' '+style.spaceheight+' '+style.asd}>
                                     <Link to={`/nordica/${total}`}>
                                     {total}
                                     </Link>     
