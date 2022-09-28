@@ -19,9 +19,10 @@ const Nordica = require("./models/nordica.schema")
 const User = require("./models/user.schema")
 const Prueba = require("./models/prueba.schema")
 //enrutador / routing
-app.get('/api/mitologias/nordica',(req, res) => {
+app.get('/api/mitologias/:mito',(req, res) => {
+        const {mito} = req.params
     Prueba
-        .find()
+        .find({mito:mito})
         .then(allMitos => res.json(allMitos))
         .catch((error)=>console.error(error))
 })

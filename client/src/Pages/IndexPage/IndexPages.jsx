@@ -46,7 +46,7 @@ export  function IndexPages() {
                   console.log(total)
                             return(
                                 <div key={total} className={'fw-normal lh-base fs-4 '+style.width+' '+style.spaceheight+' '+style.asd}>
-                                    <Link to={`/nordica/${total}`}>
+                                    <Link to={`/${total}`}>
                                     {total}
                                     </Link>     
                                 </div>

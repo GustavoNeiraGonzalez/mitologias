@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,11 +10,12 @@ import style3 from '../heightfull/height.module.css'
 import axios from 'axios'
 
 const NordicaPage = () =>{
+    const {TituloMito} = useParams();
 
-    const [nordica, setNordica] = useState([])
+    const [mito, setMito] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:3001/api/mitologias/nordica')
-        .then(allNordica =>setNordica(allNordica.data))
+        axios.get(`http://localhost:3001/api/mitologias/${TituloMito}`)
+        .then(allNordica =>setMito(allNordica.data))
     }, [])
     
 
@@ -25,11 +26,13 @@ const NordicaPage = () =>{
                 <Col sm={10} xs={10} className={style.color +' '+style.flexbox}>
 
                     <div >
-                        {nordica.map(nordic => {
+                        
+                        {mito.map(mit => {
+                            console.log(mit.info.Titulo)
                             return(
-                                <div key={nordic._id} className={style2.color +' '+style2.paddingpos}>
-                                    <Link to={`/nordica/${nordic._id}`}>
-                                    {nordic.Titulo}
+                                <div key={mit._id} className={style2.color +' '+style2.paddingpos}>
+                                    <Link to={`/nordica/${mit._id}`}>
+                                    {mit.info.Titulo}
                                     </Link>     
                                 </div>
                             )
