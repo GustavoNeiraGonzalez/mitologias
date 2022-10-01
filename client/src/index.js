@@ -26,7 +26,7 @@ root.render(
         <Route path="/:TituloMito/:nordica_id" element={<NordicaDetails/>}/>
         <Route path="/:TituloMito/:nordica_id/update" element={<UpdateHistory/>}/>
         <Route path="/login" element={<Login/>}/>
-        <Route path="/BorrarHistoria" element={<DeleteHistory/>} />
+        <Route path="/ModificarHistoria" element={<DeleteHistory/>} />
       </Routes>
     </main>
     <footer>

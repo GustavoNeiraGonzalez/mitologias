@@ -28,6 +28,12 @@ app.get('/api/mitologias/:mito',(req, res) => {
         .then(allMitos => res.json(allMitos))
         .catch((error)=>console.error(error))
 })
+app.get('/api/mitos',(req, res) => {
+    Prueba
+        .find({})
+        .then(allMitos => res.json(allMitos))
+        .catch((error)=>console.error(error))
+})
 app.get('/api/difMitos',(req, res) => {
         Prueba
             .find()

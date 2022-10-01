@@ -25,7 +25,7 @@ export  function Header() {
                     <Nav.Link as={NavLink} to="/nordica">Nordica</Nav.Link>
                     {
                         user 
-                        ? <Nav.Link as={NavLink} to={`/borrarHistoria`}>Modificar historias</Nav.Link>
+                        ? <Nav.Link as={NavLink} to={`/ModificarHistoria`}>Modificar historias</Nav.Link>
                         : <div/>
                     }
                     <Nav.Link as={NavLink} to="/">home</Nav.Link>

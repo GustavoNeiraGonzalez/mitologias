@@ -41,11 +41,11 @@ export  function IndexPages() {
                 Mitologias planeadas en implementar: Griega, egipcia
             </div>
             <div className={'fw-normal lh-base fs-4 '+style.width+' '+style.spaceheight}>
-                Mitologias en Construcción: <Link to="/nordica">Nordica</Link></div>
+                Mitologias en Construcción: Nordica, griega, egipcia</div>
                 {totalMitos.map(total => {
                   console.log(total)
                             return(
-                                <div key={total} className={'fw-normal lh-base fs-4 '+style.width+' '+style.spaceheight+' '+style.asd}>
+                                <div key={total} className={'fw-normal lh-base fs-4 '+style.width+' '+style.asd}>
                                     <Link to={`/${total}`}>
                                     {total}
                                     </Link>     
