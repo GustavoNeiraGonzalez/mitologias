@@ -28,10 +28,10 @@ const NordicaPage = () =>{
                     <div >
                         
                         {mito.map(mit => {
-                            console.log(mit.info.Titulo)
+                            console.log(mit._id)
                             return(
                                 <div key={mit._id} className={style2.color +' '+style2.paddingpos}>
-                                    <Link to={`/nordica/${mit._id}`}>
+                                    <Link to={`/${TituloMito}/${mit._id}`}>
                                     {mit.info.Titulo}
                                     </Link>     
                                 </div>

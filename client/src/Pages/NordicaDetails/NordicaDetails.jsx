@@ -9,7 +9,7 @@ import axios from 'axios'
 import style3 from '../heightfull/height.module.css'
 
 const NordicaDetails = () => {
-
+    const {TituloMito} = useParams();
     const {nordica_id} = useParams();
     const [nordica, setNordica] = useState({})
     const [user,setUser] = useState('');
@@ -22,7 +22,7 @@ const NordicaDetails = () => {
       }
     },[])
     useEffect(() => {
-      
+      console.log(nordica_id)
       axios.get(`http://localhost:3001/api/history/${nordica_id}`)
       .then(nordica => setNordica(nordica.data))
       .catch(error => console.log(error))
@@ -32,6 +32,7 @@ const NordicaDetails = () => {
     return (
         <Container className={style.resize+' '+style3.heig}>
         <Row >
+          <h1>{nordica_id}</h1>
           <Col sm={1} xs={1}></Col>
           <Col sm={10} xs={10} className={style.color +' '+style.flexbox}>
               <div className={'fw-semibold lh-base fs-4 '+style.width+' '+style.spaceheight}>

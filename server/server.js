@@ -6,6 +6,8 @@ const bcrypt = require('bcrypt')
 const port = process.env.PORT || 3001;//process.env.port es propio dejavascript
 const controllers = require("./controllers");
 const verifyToken = require('./middlewares/verifyToken')
+const mongoose = require('mongoose')
+var ObjectId = require('mongoose').Types.ObjectId;
 
 // CORS (Protección de llamado de los datos del sv)
 var cors = require('cors')
@@ -36,10 +38,13 @@ app.get('/api/difMitos',(req, res) => {
 //rutas creadas para retornar datos segun id 
 //de la coleccion "nordica"
 app.get('/api/history/:nordica_id', (req, res) =>{
-        const {nordica_id } = req.params
+        var nordica_id = req.params.nordica_id
         Prueba
-                .findById(nordica_id)
-                .then(historia => res.json(historia.info))
+                .findById(nordica_id.trim())//ERROR SOLUCIONADO POR ALGUN MOTIVO SI NO USABA TRIM TIRABA UN ERROR QUE NO PODIA SOLUCIONAR
+                .then(historia => res.json(historia))
+                .catch((error)=>console.error(error))
+
+
 })
 app.get('/test/:mitologia', (req, res) =>{
         const {mitologia} = req.params
@@ -135,7 +140,6 @@ app.post("/register" ,controllers.register);
 app.get('/user', verifyToken,controllers.getUserById);
 app.post("/login", controllers.login);
 //DB conexion
-const mongoose = require('mongoose')
 mongoose.connect("mongodb://localhost:27017/mitologias")
         .then(()=>console.log("conectado a la bd"))
         .catch((error)=>console.error(error))
