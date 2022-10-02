@@ -52,15 +52,7 @@ const DeleteHistory = () => {
                       )
                   })}
 
-      <Col sm={4} xs={4}>2 of 3</Col>
-      <Col sm={4} xs={4}>3 of 3</Col>
-      <Col sm={4} xs={4}>3 of 3</Col>
-      <Col sm={4} xs={4}>3 of 3</Col>
-      <Col sm={4} xs={4}>3 of 3</Col>
-      <Col sm={4} xs={4}>3 of 3</Col>
-      <Col sm={4} xs={4}>3 of 3</Col>
-      <Col sm={4} xs={4}>3 of 3</Col>
-      <Col sm={4} xs={4}>3 of 3</Col>
+
 
     </Row>
   </Container>

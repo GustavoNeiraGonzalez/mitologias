@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import axios from "axios"
@@ -7,7 +7,7 @@ import style from '../UpdateHistory/UpdateHistory.module.css'
 
 export default function InsertHistory() {
 
-
+    const [Mito, setmito] = useState('');
     const [user,setUser] = useState('');
     const [config,setConfig] = useState('');
     const [Titulo, settitulo] = useState('');
@@ -18,6 +18,13 @@ export default function InsertHistory() {
     const [Historia, sethistoria] = useState('');
     const [Fuentes, setfuentes] = useState('');
 
+    const [totalMitos, settotalMitos] = useState([])
+    useEffect(() => {
+      
+        axios.get('http://localhost:3001/api/difMitos')
+        .then(allNordica =>settotalMitos(allNordica.data))
+        console.log(totalMitos)
+    }, [])
 
     useEffect(()=>{
       const loggedUserJson = window.localStorage.getItem('loggedd')
@@ -47,12 +54,40 @@ export default function InsertHistory() {
         .catch(err =>console.log(err))
     }
 
+    const mitosInput = useRef(null)
+    function disable(){
+    }
   return (
     <div>
       {
         user 
           ?
         <Form className={style.color}>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Label>asdsd</Form.Label>
+              <Form.Select onChange={(e)=>
+              {
+                if(e.target.value==="Elegir Mito"){
+                  mitosInput.current.disabled=false;
+                  mitosInput.current.value="";
+
+                }else{
+                  mitosInput.current.disabled=true
+
+                }}
+                }>
+                {totalMitos.map(total =>{
+                  return(
+                    <option key={total}>{total}</option>
+                    )
+                })}
+                <option>Elegir Mito</option>
+              </Form.Select >
+              <Form.Control ref={mitosInput} type="text" placeholder="Escribir solo si creas una mitologia nueva"
+              onChange={(e) => {
+                  setmito(e.target.value);
+              }}/>
+          </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Titulo</Form.Label>
             <Form.Control type="text" placeholder="ej: El diluvio" 
