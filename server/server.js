@@ -83,7 +83,7 @@ app.post('/inserttest', async (req,res) =>{
 //verifytoken verifica que tenga un token para asegurar que el usuario este logeado
 //ruta mas segura :D
 app.post('/insert',verifyToken, async (req,res) =>{
-        
+        const Mito = req.body.Mito;
         const Titulo = req.body.Titulo;
         const Dioses = req.body.Dioses;
         const Facciones = req.body.Facciones;
@@ -93,7 +93,7 @@ app.post('/insert',verifyToken, async (req,res) =>{
         const Fuentes = req.body.Fuentes;
 
         const MitoNordic = new Prueba({info:{Titulo:Titulo,Dioses:Dioses,Facciones:Facciones,Personajes_importantes:Personajes_importantes,Lugares:Lugares,Historia:Historia,Fuentes:Fuentes}
-        ,mito:"Nordica"});
+        ,mito:Mito});
         try{
                 await MitoNordic.save();
                 res.send("inserted data")

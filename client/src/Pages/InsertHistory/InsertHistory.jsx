@@ -42,21 +42,26 @@ export default function InsertHistory() {
     },[])
 
     const addToList = () => {
-        axios.post('http://localhost:3001/insert', {
-            Titulo:Titulo,
-            Dioses:Dioses,
-            Facciones:Facciones,
-            Personajes_importantes:Personajes_importantes,
-            Lugares:Lugares,
-            Historia:Historia,
-            Fuentes:Fuentes
+        if(Mito && Titulo && Historia!==""){
+          axios.post('http://localhost:3001/insert', {
+              Mito:Mito,
+              Titulo:Titulo,
+              Dioses:Dioses,
+              Facciones:Facciones,
+              Personajes_importantes:Personajes_importantes,
+              Lugares:Lugares,
+              Historia:Historia,
+              Fuentes:Fuentes
         }, config)
         .catch(err =>console.log(err))
+        }else{
+          console.log("obligatorio elegir/escribir un mito, historia y Titulo para añadir una mitologia")
+
+      }
     }
 
     const mitosInput = useRef(null)
-    function disable(){
-    }
+
   return (
     <div>
       {
@@ -64,16 +69,16 @@ export default function InsertHistory() {
           ?
         <Form className={style.color}>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>asdsd</Form.Label>
+            <Form.Label>Mito</Form.Label>
               <Form.Select onChange={(e)=>
               {
                 if(e.target.value==="Elegir Mito"){
                   mitosInput.current.disabled=false;
-                  mitosInput.current.value="";
-
+                  setmito("")
                 }else{
                   mitosInput.current.disabled=true
-
+                  mitosInput.current.value="";
+                  setmito(e.target.value)
                 }}
                 }>
                 {totalMitos.map(total =>{
