@@ -17,7 +17,6 @@ app.use(bodyParser.json())
 
 
 //modelo
-const Nordica = require("./models/nordica.schema")
 const User = require("./models/user.schema")
 const Prueba = require("./models/prueba.schema")
 //enrutador / routing
@@ -52,32 +51,7 @@ app.get('/api/history/:nordica_id', (req, res) =>{
 
 
 })
-app.get('/test/:mitologia', (req, res) =>{
-        const {mitologia} = req.params
-        console.log(mitologia)
-        Prueba
-                .find({mito:mitologia,"info.Titulo":"El Mito de Frigg"})
-                .then(historia => res.json(historia))
-                .catch((error)=>console.error(error))
-})
-app.get('/asd', (req, res) =>{
-        Prueba
-                .find({mito:"nordicss"})
-                .then(historia => res.json(historia))
-                .catch((error)=>console.error(error))
 
-})
-app.post('/inserttest', async (req,res) =>{
-        
-        const Titulo = req.body.Titulo;
-        const MitoNordic = new Prueba({info:{Titulo:Titulo},mito:"XD"});
-        try{
-                await MitoNordic.save();
-                res.send("inserted data")
-            }catch(err){
-                console.log(err)
-            }
-})
 
 //post
 //verifytoken verifica que tenga un token para asegurar que el usuario este logeado
@@ -115,15 +89,16 @@ app.put('/update',verifyToken, async (req,res) =>{
         const Historia = req.body.Historia;
         const Fuentes = req.body.Fuentes;
         try{
-                await Nordica.findById(id)
+                await Prueba.findById(id)
                 .then(updateMito=>{
-                                updateMito.Titulo =Titulo;
-                                updateMito.Dioses =Dioses;
-                                updateMito.Facciones =Facciones;
-                                updateMito.Personajes_importantes =Personajes_importantes;
-                                updateMito.Lugares =Lugares;
-                                updateMito.Historia =Historia;
-                                updateMito.Fuentes =Fuentes;
+                                console.log(updateMito)
+                                updateMito.info.Titulo =Titulo;
+                                updateMito.info.Dioses =Dioses;
+                                updateMito.info.Facciones =Facciones;
+                                updateMito.info.Personajes_importantes =Personajes_importantes;
+                                updateMito.info.Lugares =Lugares;
+                                updateMito.info.Historia =Historia;
+                                updateMito.info.Fuentes =Fuentes;
                                 updateMito.save();
                                 res.send("update")
                 })
@@ -137,7 +112,7 @@ app.put('/update',verifyToken, async (req,res) =>{
 //ruta mas segura :D
 app.delete("/delete/:id",verifyToken, async(req,res)=>{
         const id = req.params.id;
-        await Nordica.findByIdAndDelete(id)
+        await Prueba.findByIdAndDelete(id)
         .exec();
 
 })
