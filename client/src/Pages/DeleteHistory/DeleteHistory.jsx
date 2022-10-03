@@ -18,7 +18,6 @@ const DeleteHistory = () => {
   const [nordica, setNordica] = useState([])
   {
     useEffect(() => {
-      console.log(totalMitos)
       axios.get(`http://localhost:3001/api/mitos`)
       .then(allNordica =>setNordica(allNordica.data))
   }, [])
@@ -26,7 +25,6 @@ const DeleteHistory = () => {
   return (
     <Container className={style.color+' '+style.resize+' '+style3.heig}>
     <Row >
-      {console.log(totalMitos)}
       {totalMitos.map(total => {
                       return(
                         <Col key={total} sm={4} xs={4}>
@@ -35,10 +33,9 @@ const DeleteHistory = () => {
                               
                               {nordica.filter(allhistory => allhistory.mito===total)
                               .map(nordic => {
-                                console.log(nordic)
                                   return(
                                       <div key={nordic._id} className={style2.color +' '+style2.paddingpos}>
-                                          <Link to={`/nordica/${nordic._id}/update`}>
+                                          <Link to={`/${total}/${nordic._id}/update`}>
                                           {nordic.info.Titulo}
                                           asd
                                           </Link> 

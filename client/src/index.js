@@ -22,7 +22,6 @@ root.render(
         <Route path="/" element={<IndexPages/>}/>
         <Route path="/AgregarHistoria" element={<InsertHistory/>}></Route>
         <Route path="/:TituloMito" element={<NordicaPage/>}/>
-        <Route path="/AgregarMitos" element={<div>ss</div>}></Route>
         <Route path="/:TituloMito/:nordica_id" element={<NordicaDetails/>}/>
         <Route path="/:TituloMito/:nordica_id/update" element={<UpdateHistory/>}/>
         <Route path="/login" element={<Login/>}/>

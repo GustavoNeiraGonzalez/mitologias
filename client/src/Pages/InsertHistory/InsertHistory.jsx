@@ -23,7 +23,6 @@ export default function InsertHistory() {
       
         axios.get('http://localhost:3001/api/difMitos')
         .then(allNordica =>settotalMitos(allNordica.data))
-        console.log(totalMitos)
     }, [])
 
     useEffect(()=>{
@@ -31,7 +30,6 @@ export default function InsertHistory() {
       if (loggedUserJson){
         const user = (JSON.parse(loggedUserJson)).usuario
         setUser(user)
-        console.log(user)
         const configg =  {
           headers:{
               token:`bearer ${user.token}`
@@ -56,7 +54,6 @@ export default function InsertHistory() {
         .catch(err =>console.log(err))
         }else{
           console.log("obligatorio elegir/escribir un mito, historia y Titulo para añadir una mitologia")
-
       }
     }
 

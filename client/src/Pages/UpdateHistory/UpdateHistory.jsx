@@ -5,7 +5,7 @@ import axios from "axios"
 import { Link, useParams } from 'react-router-dom';
 import style from './UpdateHistory.module.css'
 const UpdateHistory = () => {
-
+    const [Mito, setmito] = useState("");
     const [Titulo, settitulo] = useState("");
     const [Dioses, setdioses] = useState("");
     const [Facciones, setfacciones] = useState("");
@@ -38,13 +38,15 @@ const UpdateHistory = () => {
 
     useEffect(() => {
       axios.get(`http://localhost:3001/api/history/${nordica_id}`)
-      .then(Nordica => (setNordica(Nordica.data) ,settitulo(Nordica.data.Titulo)
-      ,setdioses(Nordica.data.Dioses),
-        setfacciones(Nordica.data.Facciones),
-        setpersonajes(Nordica.data.Personajes_importantes),
-        setlugares(Nordica.data.Lugares),
-        sethistoria(Nordica.data.Historia),
-        setfuentes(Nordica.data.Fuentes)))
+      .then(Nordica => (setNordica(Nordica.data),
+        setmito(Nordica.data.mito),
+        settitulo(Nordica.data.info.Titulo),
+        setdioses(Nordica.data.info.Dioses),
+        setfacciones(Nordica.data.info.Facciones),
+        setpersonajes(Nordica.data.info.Personajes_importantes),
+        setlugares(Nordica.data.info.Lugares),
+        sethistoria(Nordica.data.info.Historia),
+        setfuentes(Nordica.data.info.Fuentes)))
       .catch(error => console.log(error))
       
     }, [])
@@ -78,6 +80,12 @@ const UpdateHistory = () => {
         user 
         ?
       <Form className={style.color}>
+        <Form.Group className="mb-3" controlId="Titulo">
+          <Form.Label>Mito</Form.Label>
+          <Form.Control disabled type="text" defaultValue={Mito}
+          />
+        </Form.Group>
+
         <Form.Group className="mb-3" controlId="Titulo">
           <Form.Label>Titulo</Form.Label>
           <Form.Control type="text" onChange={(e) => {
