@@ -14,7 +14,6 @@ export  function IndexPages() {
   useEffect(() => {
       axios.get('http://localhost:3001/api/difMitos')
       .then(allNordica =>settotalMitos(allNordica.data))
-      console.log(totalMitos)
   }, [])
   return (
     <Container className={style.resize+' '+style2.heig}>
@@ -43,7 +42,6 @@ export  function IndexPages() {
             <div className={'fw-normal lh-base fs-4 '+style.width+' '+style.spaceheight}>
                 Mitologias en Construcción: Nordica, griega, egipcia</div>
                 {totalMitos.map(total => {
-                  console.log(total)
                             return(
                                 <div key={total} className={'fw-normal lh-base fs-4 '+style.width+' '+style.asd}>
                                     <Link to={`/${total}`}>

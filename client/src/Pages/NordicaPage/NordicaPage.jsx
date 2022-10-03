@@ -16,7 +16,8 @@ const NordicaPage = () =>{
     useEffect(() => {
         axios.get(`http://localhost:3001/api/mitologias/${TituloMito}`)
         .then(allNordica =>setMito(allNordica.data))
-    }, [])
+    }, [TituloMito])//Asi se recarga cada vez que se recarga el parametro del mito, ya que usando
+    //links solo mostraba el primer mito elegido y los siguientes mostraria la info del primero
     
 
     return(
@@ -28,7 +29,6 @@ const NordicaPage = () =>{
                     <div >
                         
                         {mito.map(mit => {
-                            console.log(mit._id)
                             return(
                                 <div key={mit._id} className={style2.color +' '+style2.paddingpos}>
                                     <Link to={`/${TituloMito}/${mit._id}`}>

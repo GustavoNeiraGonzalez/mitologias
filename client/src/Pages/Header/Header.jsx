@@ -4,10 +4,17 @@ import Container from 'react-bootstrap/Container';
 import NavbarBrand from 'react-bootstrap/esm/NavbarBrand';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { NavLink } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import axios from 'axios'
 export  function Header() {
     const [user,setUser] = useState('');
-
+    const [totalMitos, settotalMitos] = useState([])
+    useEffect(() => {
+        axios.get('http://localhost:3001/api/difMitos')
+        .then(allNordica =>settotalMitos(allNordica.data))
+        console.log(totalMitos)
+    }, [])
     useEffect(()=>{
       const loggedUserJson = window.localStorage.getItem('loggedd')
       if (loggedUserJson){
@@ -18,11 +25,18 @@ export  function Header() {
   return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
-                <Navbar.Brand as={NavbarBrand   } to="/">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand as={NavbarBrand   } to="/">Mitos :D</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                    <Nav.Link as={NavLink} to="/nordica">Nordica</Nav.Link>
+                    {totalMitos.map(total => {
+                            return(
+                                <Nav.Link   key={total} as={Link} to={`/${total}`}>
+                                -{total}
+                                </Nav.Link>
+                            )
+                        })}
                     {
                         user 
                         ? <Nav.Link as={NavLink} to={`/ModificarHistoria`}>Modificar historias</Nav.Link>
