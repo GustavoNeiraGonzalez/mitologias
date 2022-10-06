@@ -21,10 +21,10 @@ const NordicaPage = () =>{
     
 
     return(
-        <Container className={style.resize+' '+style3.heig}>
+        <Container className={style.resize}>
             <Row >
                 <Col sm={1} xs={1}></Col>
-                <Col sm={10} xs={10} className={style.color +' '+style.flexbox}>
+                <Col sm={10} xs={10} className={style.color +' '+style.flexbox+' '+' '+style3.heig}>
 
                     <div >
                         

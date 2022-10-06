@@ -16,10 +16,10 @@ export  function IndexPages() {
       .then(allNordica =>settotalMitos(allNordica.data))
   }, [])
   return (
-    <Container className={style.resize+' '+style2.heig}>
+    <Container className={style.resize}>
       <Row >
         <Col sm={1} xs={1}></Col>
-        <Col sm={10} xs={10} className={style.color +' '+style.flexbox}>
+        <Col sm={10} xs={10} className={style.color +' '+style.flexbox +' '+style2.heig}>
             <div className={'fw-semibold lh-base fs-4 '+style.width+' '+style.spaceheight}>
                 Bienvenido! 
                 <br />

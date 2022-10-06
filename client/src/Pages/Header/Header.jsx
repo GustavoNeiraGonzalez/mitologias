@@ -13,7 +13,6 @@ export  function Header() {
     useEffect(() => {
         axios.get('http://localhost:3001/api/difMitos')
         .then(allNordica =>settotalMitos(allNordica.data))
-        console.log(totalMitos)
     }, [])
     useEffect(()=>{
       const loggedUserJson = window.localStorage.getItem('loggedd')
@@ -39,7 +38,12 @@ export  function Header() {
                         })}
                     {
                         user 
-                        ? <Nav.Link as={NavLink} to={`/ModificarHistoria`}>Modificar historias</Nav.Link>
+                        ? <Nav.Link as={NavLink} to={`/ModificarHistoria`}>Modificar historias</Nav.Link> 
+                        : <div/>
+                    }
+                     {
+                        user 
+                        ? <Nav.Link as={NavLink} to={`/agregarHistoria`}>agregar Historia</Nav.Link> 
                         : <div/>
                     }
                     <Nav.Link as={NavLink} to="/">home</Nav.Link>
