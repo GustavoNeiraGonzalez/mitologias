@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -7,13 +7,22 @@ import Col from 'react-bootstrap/Col';
 import style from './IndexPages.module.css'
 import style2 from '../heightfull/height.module.css'
 import axios from 'axios'
-
+import swal from 'sweetalert2'
+import {alerta,error} from '../Alertas/alertas'
 export  function IndexPages() {
-  
+    const navigate = useNavigate()
   const [totalMitos, settotalMitos] = useState([])
   useEffect(() => {
       axios.get('http://localhost:3001/api/difMitos')
-      .then(allNordica =>settotalMitos(allNordica.data))
+      .then(allNordica => {try {
+        settotalMitos(allNordica.data)
+      } catch (err) {
+        error(err)
+      }
+      })
+      .catch((err) =>
+        error(err)
+      )
   }, [])
   return (
     <Container className={style.resize}>

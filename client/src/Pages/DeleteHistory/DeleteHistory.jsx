@@ -37,7 +37,6 @@ const DeleteHistory = () => {
                                       <div key={nordic._id} className={style2.color +' '+style2.paddingpos}>
                                           <Link to={`/${total}/${nordic._id}/update`}>
                                           {nordic.info.Titulo}
-                                          asd
                                           </Link> 
                                       </div>
                                   )

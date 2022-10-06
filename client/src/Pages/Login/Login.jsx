@@ -4,27 +4,20 @@ import { useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import style from '../UpdateHistory/UpdateHistory.module.css'
 import style2 from '../heightfull/height.module.css'
+import { alerta,error } from '../Alertas/alertas';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate()
+
   const [user,setUser] = useState('');
   const [name,setName] = useState('');
   const [password,setPassword] = useState('');
   const [config,setConfig] = useState('');
-  useEffect(()=>{
-    const loggedUserJson = window.localStorage.getItem('loggedd')
-    if (loggedUserJson){
-      const user = (JSON.parse(loggedUserJson)).usuario
-      setUser(user)
-      const configg =  {
-        headers:{
-            token:`bearer ${user.token}`
-        }
-      }
-      setConfig(configg)
-    }
-  },[])
+  
     const login =  async credentials =>{
-      const {data} = await axios.post("http://localhost:3001/login",
+      const {data} = await 
+        axios.post("http://localhost:3001/login",
       credentials)
       return data
     }
@@ -36,11 +29,9 @@ const Login = () => {
           name,
           password
         })
-
         window.localStorage.setItem(
           'loggedd', JSON.stringify(user)
         )
-
         var tok = `bearer ${user.usuario.token}`
         const configg =  {
           headers:{
@@ -54,9 +45,14 @@ const Login = () => {
         setName('')
         setPassword('')
 
-
-      } catch (error) {
-        console.log(error)
+        alerta("Logeado con exito")
+        navigate("/")
+      } catch (err) {
+        if(err.message ==="Cannot read properties of undefined (reading 'token')"){
+          error("Error: usuario y/o contraseña incorrectas")
+        }else{
+          error(err)
+        }
       }
       
 

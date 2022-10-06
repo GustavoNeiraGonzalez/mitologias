@@ -2,9 +2,12 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import axios from "axios"
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import style from './UpdateHistory.module.css'
+import {alerta,error} from '../Alertas/alertas'
 const UpdateHistory = () => {
+  const navigate = useNavigate()
+
     const [Mito, setmito] = useState("");
     const [Titulo, settitulo] = useState("");
     const [Dioses, setdioses] = useState("");
@@ -56,8 +59,8 @@ const UpdateHistory = () => {
     setfacciones(Facciones.toString().split(','))
     setpersonajes(Personajes_importantes.toString().split(','))
     setlugares(Lugares.toString().split(','))
-    
-    axios.put('http://localhost:3001/update' , {
+    try {
+      axios.put('http://localhost:3001/update' , {
         id:id,
         Titulo:Titulo,
         Dioses:Dioses,
@@ -67,11 +70,20 @@ const UpdateHistory = () => {
         Historia:Historia,
         Fuentes:Fuentes
     }, config)
-    .catch(err =>console.log(err))
+    .then(alerta("Modificado con exito"))
+    .catch((err) => error(err))
+    } catch (err) {
+      error(err)
+    }
+    
 }
     
     const Delete = (id) =>{
+
         axios.delete(`http://localhost:3001/delete/${id}`,config)
+        .then((alerta("Borrado con exito") 
+        ,navigate("/ModificarHistoria"))
+        .catch(err => error(err)))
     }
 
   return (

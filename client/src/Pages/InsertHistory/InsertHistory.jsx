@@ -2,10 +2,11 @@ import React, { useEffect, useRef } from 'react'
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import axios from "axios"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import style from '../UpdateHistory/UpdateHistory.module.css'
-
+import {alerta,error} from '../Alertas/alertas'
 export default function InsertHistory() {
+  const navigate = useNavigate()
 
     const [Mito, setmito] = useState('');
     const [user,setUser] = useState('');
@@ -41,7 +42,8 @@ export default function InsertHistory() {
 
     const addToList = () => {
         if(Mito && Titulo && Historia!==""){
-          axios.post('http://localhost:3001/insert', {
+          try {
+            axios.post('http://localhost:3001/insert', {
               Mito:Mito,
               Titulo:Titulo,
               Dioses:Dioses,
@@ -51,7 +53,11 @@ export default function InsertHistory() {
               Historia:Historia,
               Fuentes:Fuentes
         }, config)
-        .catch(err =>console.log(err))
+        .then((alerta("Agregado con exito"),navigate("/ModificarHistoria")))
+        .catch(err =>error(err))
+          } catch (err) {
+            error(err)
+          }
         }else{
           console.log("obligatorio elegir/escribir un mito, historia y Titulo para añadir una mitologia")
       }
