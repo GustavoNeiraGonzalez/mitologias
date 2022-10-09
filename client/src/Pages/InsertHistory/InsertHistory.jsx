@@ -52,14 +52,26 @@ export default function InsertHistory() {
               Lugares:Lugares,
               Historia:Historia,
               Fuentes:Fuentes
-        }, config)
-        .then((alerta("Agregado con exito"),navigate("/ModificarHistoria")))
-        .catch(err =>error(err))
+            }, config)
+            .then((response)=>(alerta("Agregado con exito"),navigate("/ModificarHistoria")))
+            .catch(err =>{
+              if (err.response) {
+                console.log(err.response.status)
+                console.log(err.response.data.mensaje)
+                error(err.response.data.mensaje)
+                if(err.response.data.mensaje === "Token invalido"){
+                  setUser('')
+                  window.localStorage.removeItem('loggedd')
+                  navigate("/ModificarHistoria")
+                }
+                
+
+             }})  
           } catch (err) {
             error(err)
           }
         }else{
-          console.log("obligatorio elegir/escribir un mito, historia y Titulo para añadir una mitologia")
+          alerta("obligatorio elegir/escribir un mito, historia y Titulo para añadir una mitologia")
       }
     }
 

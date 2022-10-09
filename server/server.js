@@ -56,6 +56,7 @@ app.get('/api/history/:nordica_id', (req, res) =>{
 //post
 //verifytoken verifica que tenga un token para asegurar que el usuario este logeado
 //ruta mas segura :D
+app.post('/verifyToken',verifyToken, async (req,res) =>{})
 app.post('/insert',verifyToken, async (req,res) =>{
         const Mito = req.body.Mito;
         const Titulo = req.body.Titulo;
