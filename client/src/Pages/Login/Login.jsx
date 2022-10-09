@@ -21,7 +21,9 @@ const Login = () => {
       credentials)
       return data
     }
-
+    const delay = ms => new Promise(
+      resolve => setTimeout(resolve, ms)
+    );
     const handleLogin = async(e)=>{
       e.preventDefault()
       try {
@@ -46,7 +48,13 @@ const Login = () => {
         setPassword('')
 
         alerta("Logeado con exito")
+        await delay(1000);
+
         navigate("/")
+
+        window.location.reload(false);
+
+
       } catch (err) {
         if(err.message ==="Cannot read properties of undefined (reading 'token')"){
           error("Error: usuario y/o contraseña incorrectas")

@@ -71,7 +71,7 @@ export default function InsertHistory() {
             error(err)
           }
         }else{
-          alerta("obligatorio elegir/escribir un mito, historia y Titulo para añadir una mitologia")
+          error("obligatorio elegir/escribir un mito, historia y Titulo para añadir una mitologia")
       }
     }
 

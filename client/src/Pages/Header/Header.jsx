@@ -34,7 +34,6 @@ export  function Header() {
       },[])
       
       useEffect(() => {
-        console.log(config)
         axios.post('http://localhost:3001/verifyToken',{},config)
         .catch(err =>{
             if (err.response) {
@@ -42,6 +41,8 @@ export  function Header() {
                 setUser('')
                 setConfig('')
                 window.localStorage.removeItem('loggedd')
+              }else if(err.response.data.mensaje ==="Debes enviar un token"){
+                console.log("error esperado")
               }
            }})  
     }, [config])
@@ -51,7 +52,6 @@ export  function Header() {
             <Container>
                 <Navbar.Brand as={NavbarBrand   } to="/">Mitos :D</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                {console.log(user)}
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                     {totalMitos.map(total => {
@@ -72,8 +72,8 @@ export  function Header() {
                         : <div/>
                     }
                     <Nav.Link as={NavLink} to="/">home</Nav.Link>
-                    
                     </Nav>
+
                 </Navbar.Collapse>
             </Container>
         </Navbar>
