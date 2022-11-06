@@ -8,7 +8,11 @@
 
 <div align="center">
 
-[![React-18.2.0](https://img.shields.io/badge/React-18.2.0-teal.svg "Badge react.js")](https://reactjs.org/)
+[![MERN](https://img.shields.io/badge/MERN-Stack-blue.svg)](https://www.mongodb.com/mern-stack)
+[![Mongo](https://img.shields.io/badge/MongoDB-6.0.2-darkgreen.svg)](https://www.mongodb.com/)
+[![Express](https://img.shields.io/badge/Express.js-4.18.1-red.svg)]()
+[![React-18.2.0](https://img.shields.io/badge/React.js-18.2.0-teal.svg "Badge react.js")](https://reactjs.org/)
+[![NodeJS](https://img.shields.io/badge/Node.js-18.12.1-yellow.svg)](https://nodejs.org/)
 
 </div>
 
