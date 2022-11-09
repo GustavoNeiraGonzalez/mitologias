@@ -1,6 +1,8 @@
 # Mitologias
 ### Proyecto creado de manera de aprendizaje sobre todo de mongodb
 Nota: alertas no perfeccionadas 
+Nota 2: No hay forma de acceder al login (de manera manual en la pagina) por idea del desarrollador
+Nota 3: No hay boton de deslogear, por idea del desarrollador
 ## **¿Que se utilizo en este proyecto?**
 
 Proyecto realizado en REST api
