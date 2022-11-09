@@ -3,6 +3,11 @@
 Nota: alertas no perfeccionadas 
 Nota 2: No hay forma de acceder al login (de manera manual en la pagina) por idea del desarrollador
 Nota 3: No hay boton de deslogear, por idea del desarrollador
+
+## tips
+
+Se utiliza npm start para iniciar el back y el front 
+
 ## **¿Que se utilizo en este proyecto?**
 
 Proyecto realizado en REST api
@@ -11,21 +16,33 @@ reactJs, NodeJs, MongoDB
 ## dependencias de ReactJS
 
 react-router-dom: 6.3.0
+
 sweetalert2: 11.4.38
+
 axios : 0.27.2
+
 bootstrap : 5.2.0
+
 mongoose : 6.5.2
+
 react : 18.2.0
 
 ## dependencias de NodeJs
 
 bcrypt : 5.0.1
+
 body-parser : 1.20.0
+
 cors : 2.8.5
+
 dotenv : 16.0.1
+
 express : 4.18.1
+
 jsonwebtoken : 8.5.1
+
 mongoose : 6.5.2
+
 nodemon : 2.0.19
 
 
