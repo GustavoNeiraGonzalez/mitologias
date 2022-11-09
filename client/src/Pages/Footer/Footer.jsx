@@ -7,11 +7,11 @@ export function Footer() {
   return (
         <Container className={style.color+' '+style.resize+' text-center align-middle'}>
             <Row bg="dark">
-                <Col>asd</Col>
+                <Col></Col>
                 <Col >
                     <div className='fw-semibold text-break'>contacto: gustavoEduardoNeiraGonzalez@gmail.com</div>
                     zapato producciones all rights reserved</Col>
-                <Col>asd</Col>
+                <Col></Col>
             </Row>
             
         </Container>

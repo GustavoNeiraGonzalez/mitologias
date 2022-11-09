@@ -164,7 +164,7 @@ export default function InsertHistory() {
                 setfuentes(e.target.value);
             }}/>
           </Form.Group>
-          <button type="button" onClick={addToList}>add user</button>
+          <button type="button" onClick={addToList}>Agregar Historia</button>
         </Form>
       : <Link to="/login">Logeate desgraciao</Link>
     }
