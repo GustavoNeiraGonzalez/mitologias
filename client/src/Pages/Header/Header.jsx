@@ -7,8 +7,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import { NavLink,Link } from 'react-router-dom';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
+
 
 export  function Header() {
+    const navigate = useNavigate()
     const [user,setUser] = useState('');
     const [config,setConfig] = useState('');
     const [totalMitos, settotalMitos] = useState([])
@@ -24,12 +27,17 @@ export  function Header() {
         if (loggedUserJson){
           const user = (JSON.parse(loggedUserJson)).usuario
           setUser(user)
-          const configg =  {
-            headers:{
-                token:`bearer ${user.token}`
+          try {
+            const configg =  {
+              headers:{
+                  token:`bearer ${user.token}`
+              }
             }
+            setConfig(configg)
+          } catch (error) {
+            window.localStorage.removeItem('loggedd')
+            navigate("/");
           }
-          setConfig(configg)
         }
       },[])
       
