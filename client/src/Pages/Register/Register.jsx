@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import style from '../UpdateHistory/UpdateHistory.module.css'
@@ -7,7 +7,7 @@ import style2 from '../heightfull/height.module.css'
 import { alerta,error } from '../Alertas/alertas';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
   const navigate = useNavigate()
 
   const [user,setUser] = useState('');
@@ -15,39 +15,24 @@ const Login = () => {
   const [password,setPassword] = useState('');
   const [config,setConfig] = useState('');
   
-    const login =  async credentials =>{
+    const register =  async credentials =>{
       const {data} = await 
-        axios.post("http://localhost:3001/login",
+        axios.post("http://localhost:3001/register",
       credentials)
       return data
     }
     const delay = ms => new Promise(
       resolve => setTimeout(resolve, ms)
     );
-    const handleLogin = async(e)=>{
+    const handleRegister = async(e)=>{
       e.preventDefault()
       try {
-        const user = await login({
+        await register({
           name,
           password
         })
-        window.localStorage.setItem(
-          'loggedd', JSON.stringify(user)
-        )
-        var tok = `bearer ${user.usuario.token}`
-        const configg =  {
-          headers:{
-              token:tok
-          }
-        }
-        setConfig(configg)
-        console.log(user.usuario.token)
-        console.log(configg)
-        setUser(user)
-        setName('')
-        setPassword('')
 
-        alerta("Logeado con exito")
+        alerta("Creado con exito")
         await delay(1000);
 
         navigate("/");
@@ -69,8 +54,9 @@ const Login = () => {
   return (
     <Form className={style2.heig+' '+style.color}>
       <Form.Group className="mb-3" controlId="name">
-        <Form.Label>Name</Form.Label>
-        <Form.Control type="text"  placeholder="Nombre"
+        <h1>Registro</h1>
+        <Form.Label>Usuario</Form.Label>
+        <Form.Control type="text"  placeholder="Nuevo nombre de usuario"
         onChange={(e) => {
           setName(e.target.value);
       }}
@@ -78,16 +64,16 @@ const Login = () => {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="password">
-        <Form.Label>password</Form.Label>
-        <Form.Control type="password" value={password} placeholder="password"
+        <Form.Label>Contraseña</Form.Label>
+        <Form.Control type="password" value={password} placeholder="Contraseña"
         onChange={(e) => {
             setPassword(e.target.value);
         }}/>
       </Form.Group>
 
-      <button  type="button" onClick={handleLogin}>Login ;D</button>
+      <button  type="button" onClick={handleRegister}>Crear usuario</button>
     </Form>
   )
 }
 
-export default Login
+export default Register

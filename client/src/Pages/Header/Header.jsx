@@ -80,6 +80,9 @@ export  function Header() {
                         : <div/>
                     }
                     <Nav.Link as={NavLink} to="/">home</Nav.Link>
+                    {!user ? <Nav.Link as={NavLink} to="/login">login</Nav.Link> : <div/>}
+                    {!user ? <Nav.Link as={NavLink} to="/register">register</Nav.Link> : <div/>}
+                    {user ? <Nav.Link as={NavLink} to="/logout">logout</Nav.Link> : <div/>}
                     </Nav>
 
                 </Navbar.Collapse>
