@@ -19,7 +19,12 @@ app.use(bodyParser.json())
 //modelo
 const User = require("./models/user.schema")
 const Prueba = require("./models/prueba.schema")
+
 //enrutador / routing
+app.get('/', (req, res) => {
+        res.send('<p>Servidor activo en el puerto <b>3001</b></p>')
+ })
+
 app.get('/api/mitologias/:mito',(req, res) => {
         const {mito} = req.params
     Prueba
