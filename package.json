@@ -1,0 +1,15 @@
+{
+  "name": "mitologias",
+
+  "version": "1.0.0",
+
+  "scripts": {
+    "start": "cd server && start /min cmd /c npm run start && cd ../client && start /min cmd /c npm run start && echo BackEnd: http://localhost:3001/ && echo FrontEnd: http://localhost:3000/",
+    
+    "frontend": "cd server && start /min cmd /c npm run start",
+    "backend": "cd server && start /min cmd /c npm run start",
+
+    "server": "cd server && start /min cmd /c npm run start",
+    "client": "cd server && start /min cmd /c npm run start"
+  }
+}
